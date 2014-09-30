@@ -50,3 +50,15 @@ BasicGame.Game.prototype = {
 	}
 
 };
+
+BasicGame.gameobject = {
+    spawnBird: function(game) {
+        // ...
+    },
+    clickBird: function(bird) {
+        // ...
+    },
+    removeBird: function(bird) {
+        // ...
+    }
+};
