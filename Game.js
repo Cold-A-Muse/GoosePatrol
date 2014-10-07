@@ -28,13 +28,24 @@ BasicGame.Game = function (game) {
 BasicGame.Game.prototype = {
 
 	create: function () {
+//      var birds = game.add.group(); //om straks te checken voor elke 'levende' vogel of ze binnen bounds zijn van worldscreen
+        var treeHouse = this.add.sprite(game.worldX/2, game.worldY/2,'treeHouse');
+        this.physics.arcade.enableBody(treeHouse);
+        treeHouse.body.collideWorldBounds = true;
 
+        var exampleBird = this.bird.spawnBird(10, 200, 200);
+        exampleBird.events.onInputDown.add(exampleBird.clickBird, this);
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
 	},
 
 	update: function () {
-
+//         for(var i = 0; i < birds.length; i++) {
+//            if(birds.getAt(i).body.x >= game.world.length || birds.getAt(i).body.y > game.world.height) {
+//                var deletedBird = birds.getAt(i);// pakt de bird instance
+//                deletedBird.removeBird(this);// killt de bird instance
+//            }
+//        }
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
 	},
@@ -51,14 +62,24 @@ BasicGame.Game.prototype = {
 
 };
 
-BasicGame.gameobject = {
-    spawnBird: function(game) {
-        // ...
+BasicGame.bird = {
+    spawnBird: function(x, y, velocity) {
+
+        var birdy = this.add.sprite(x,y,'player');
+        birdy.inputEnabled = true;
+        birdy.animations.add('fly', [0,1], 20, true);
+        birdy.animations.play('fly');
+        this.physics.arcade.enableBody(birdy);
+        birdy.body.velocity.x = velocity;
+        return birdy;
+        //this.player.body.collideWorldBounds = true;
     },
     clickBird: function(bird) {
-        // ...
+        bird.body.velocity.y = 200;
+        bird.body.velocity.x = 0;
+        alert('You hit the bird!')
     },
     removeBird: function(bird) {
-        // ...
+        bird.kill()
     }
 };
