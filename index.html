@@ -5,17 +5,20 @@
 	<title>Goose Patrol</title>
 	<script src="phaser.js"></script>
 	<script src="Boot.js"></script>
+    <script src="Preloader.js"></script>
+    <script src="StartMenu.js"></script>
 	<script src="Game.js"></script>
 </head>
 <body>
-
     <div id="gameContainer"></div>
     <script type="text/javascript">
-        //Init game on load
         window.onload = function() {
-            //Init game window
             var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameContainer');
             game.state.add('Boot', GoosePatrol.Boot);
+            game.state.add('Preloader', GoosePatrol.Preloader);
+            game.state.add('StartMenu', GoosePatrol.StartMenu);
+            game.state.add('Game', GoosePatrol.Game);
+            game.state.start('Boot');
         };
     </script>
 </body>

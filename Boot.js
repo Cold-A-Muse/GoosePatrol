@@ -4,9 +4,10 @@ GoosePatrol.Boot = function (game) {};
 
 GoosePatrol.Boot.prototype = {
     preload: function() {
-        this.load.image('preloadBar', 'resources/loadbar.gif')
+        this.load.image('preloaderBar', 'resources/loadbar.png')
     },
 
+    //Initialize all the game settings (e.g. screen size, amnt of pointer, etc)
     create: function() {
         this.input.maxPointers = 1;
         this.stage.disableVisibilityChange = false;
