@@ -5,6 +5,7 @@ GoosePatrol.Game = function (game) {
 
 GoosePatrol.Game.prototype = {
 
+    //Initializes all game variables and sprites
     create: function() {
         this.amtOfGoose = 10;
         this.buildWorld();
@@ -16,6 +17,8 @@ GoosePatrol.Game.prototype = {
         this.createGoose();
     },
 
+
+    //Creates a goose and adds it to the gooseGroup
     createGoose: function() {
         this.gooseGroup = this.add.group();
         this.gooseGroup.enableBody = true;
