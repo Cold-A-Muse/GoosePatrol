@@ -12,8 +12,10 @@ GoosePatrol.Preloader.prototype = {
         this.load.setPreloadSprite(this.preloadBar); //Allow Phaser to use the loadbar as an actual loadbar (resize/crop)
 
         //Load assets
-        this.load.image('gooseSprite', 'resources/goose_sprite.png');
-        this.load.image('titlescreen', 'resources/titlescreen.png')
+        this.load.image('goose', 'resources/goose_sprite.png');
+        this.load.image('titlescreen', 'resources/titlescreen.png');
+        this.load.image('sky', 'resources/sky.png');
+        this.load.image('scenery', 'resources/scenery.png');
     },
 
     create: function() {
