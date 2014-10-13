@@ -33,7 +33,7 @@ GoosePatrol.Game.prototype = {
         goose.anchor.setTo(0.5);
         goose.inputEnabled = true;
         goose.body.velocity.x = velocity;
-        goose.events.onInputDown.add(this.killGoose(), this)
+        goose.events.onInputDown.add(this.killGoose, this)
 
         //goose.animations.add('fly', [0,1], 20, true);
         //goose.animations.play('fly');
