@@ -17,35 +17,49 @@ GoosePatrol.Game.prototype = {
         this.createGoose();
     },
 
-
     //Creates a goose and adds it to the gooseGroup
     createGoose: function() {
         this.gooseGroup = this.add.group();
         this.gooseGroup.enableBody = true;
 
         for(var i = 0; i < (this.amtOfGoose/2); i++){
-            var gLeft = this.Goose.spawn(this.rnd.integerInRange(900, 1400), 375, 200);
-            var gRight = this.gooseGroup.create(this.rnd.integerInRange(900, 1400), 375, 'goose');
-            gRight.body.velocity.x=-200;
+            var gLeft = this.spawnGoose(this.rnd.integerInRange(-500, -100), 450, 200);
+            var gRight = this.spawnGoose(this.rnd.integerInRange(900, 1400), 450, -200);
         }
-        gLeft.anchor.setTo(0.5, 0.5);
-        gRight.anchor.setTo(0.5, 0.5);
+    },
+
+    spawnGoose: function(x, y, velocity) {
+        var goose = this.gooseGroup.create(x, y, 'goose');
+        goose.anchor.setTo(0.5);
+        goose.inputEnabled = true;
+        goose.body.velocity.x = velocity;
+        goose.events.onInputDown.add(this.killGoose(), this)
+
+        //goose.animations.add('fly', [0,1], 20, true);
+        //goose.animations.play('fly');
+        //this.player.body.collideWorldBounds = true;
+    },
+
+    killGoose: function(goose, pointer){
+        goose.kill();
     },
 
     update: function() {
 
     }
 };
-//fuckkk
+
+/*
 
 GoosePatrol.Goose = {
     spawn: function(x, y, velocity) {
-        var goose = this.gooseGroup.create(x,y,'goose');
+        var goose = this.gooseGroup.create(x, y, 'goose');
+        goose.anchor.setTo(0.5);
         goose.inputEnabled = true;
-        //birdy.animations.add('fly', [0,1], 20, true);
-        //birdy.animations.play('fly');
         goose.body.velocity.x = velocity;
-        return goose;
+
+        //goose.animations.add('fly', [0,1], 20, true);
+        //goose.animations.play('fly');
         //this.player.body.collideWorldBounds = true;
     },
     clickBird: function(bird) {
@@ -57,3 +71,5 @@ GoosePatrol.Goose = {
         bird.kill()
     }
 };
+
+*/
