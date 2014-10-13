@@ -36,7 +36,7 @@ GoosePatrol.Game.prototype = {
 
     }
 };
-
+//fuckkk
 
 GoosePatrol.Goose = {
     spawn: function(x, y, velocity) {
