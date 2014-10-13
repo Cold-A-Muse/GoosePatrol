@@ -8,7 +8,7 @@ GoosePatrol.Preloader.prototype = {
     //Function for loading all assets
     preload: function() {
         this.preloadBar = this.add.sprite(this.world.centerX, this.world.centerY, 'preloaderBar'); //Add loadbar
-        this.preloadBar.anchor.setTo(0.5, 0.5);
+        this.preloadBar.anchor.setTo(0.5);
         this.load.setPreloadSprite(this.preloadBar); //Allow Phaser to use the loadbar as an actual loadbar (resize/crop)
 
         //Load assets
