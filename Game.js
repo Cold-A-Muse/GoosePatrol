@@ -1,6 +1,7 @@
 GoosePatrol.Game = function (game) {
     this.amtOfGoose;
     this.amtOfCurrGoose;
+    this.amtOfGooseSpawned;
     this.gooseGroup;
     this.t;
     this.score;
@@ -11,6 +12,7 @@ GoosePatrol.Game.prototype = {
     create: function() {
         this.amtOfGoose = 100;
         this.amtOfCurrGoose = 0;
+        this.amtOfGooseSpawned = 0;
         this.buildWorld();
 
         this.score = 0;
@@ -21,7 +23,7 @@ GoosePatrol.Game.prototype = {
     buildWorld: function() {
         this.add.image(0, 0, 'sky');
         this.add.image(0, 0, 'scenery');
-        //this.createGoose();
+        this.createGoose();
     },
 
     //Creates a goose and adds it to the gooseGroup
@@ -30,18 +32,15 @@ GoosePatrol.Game.prototype = {
         this.gooseGroup.enableBody = true;
 
         for(var i = 0; i < (this.amtOfGoose); i++){
-
-
-            //TODO: Add spawn limiter (current amount of goose < max amount of goose)
-
-            //if(this.amtOfCurrGoose <= 10) {
+            if(this.amtOfCurrGoose <= 10) {
+                this.amtOfGooseSpawned++;
                 var r = this.rnd.integerInRange(1, 2);
 
                 if (r == 1)
                     var g = this.spawnGoose(this.rnd.integerInRange(-500, -100), this.rnd.integerInRange(100, 150), 200);
                 else if (r == 2)
                     var g = this.spawnGoose(this.rnd.integerInRange(900, 1400), this.rnd.integerInRange(100, 150), -200);
-            //}
+            }
         }
     },
 
@@ -70,6 +69,16 @@ GoosePatrol.Game.prototype = {
     },
 
     update: function() {
+        for(var i = 0; i < (this.amtOfGoose); i++){
+            if(this.amtOfCurrGoose <= 10) {
+                this.amtOfGooseSpawned++;
+                var r = this.rnd.integerInRange(1, 2);
 
+                if (r == 1)
+                    var g = this.spawnGoose(this.rnd.integerInRange(-500, -100), this.rnd.integerInRange(100, 150), 200);
+                else if (r == 2)
+                    var g = this.spawnGoose(this.rnd.integerInRange(900, 1400), this.rnd.integerInRange(100, 150), -200);
+            }
+        }
     }
 };
